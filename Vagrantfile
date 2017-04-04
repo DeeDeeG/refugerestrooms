@@ -27,7 +27,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # config.ssh.forward_agent = true
 
   # Share refuge repo in vagrant home folder
-  config.vm.synced_folder ".", "/vagrant/", type: "rsync",
+  config.vm.synced_folder ".", "/vagrant/", type: "virtualbox",
     rsync__exclude: ".bundle"
 
   # View virtualbox provider docs for more options
@@ -35,6 +35,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vb.name = BOXNAME
     # Uncomment this if you need more than default of 512
     vb.customize ["modifyvm", :id, "--memory", "1024"]
+    vb.customize ["modifyvm", :id, "--cpus", "3"]
   end
 
   # If this gets bigger I can make it into a chef run
