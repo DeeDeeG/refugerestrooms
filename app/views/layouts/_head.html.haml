@@ -1,0 +1,12 @@
+%meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+%title= content_for?(:title) ? yield(:title) : "REFUGE Restrooms"
+%meta{:content => content_for?(:description) ? yield(:description) : "Refuge Restrooms", :name => "description"}/
+%meta{:content => "gender neutral restrooms,gender,neutral,restrooms, unisex restrooms, unisex, restrooms, refuge restrooms, refuge, restrooms", :name => "keywords"}/
+%link{:href => "//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css", :rel => "stylesheet", :name => "fontawesome"}/
+%meta{:content => "RefugeRestrooms.org", :name => "author"}/
+%meta{:content => "initial-scale=1, maximum-scale=1", :name => "viewport"}/
+
+%script{:src => "https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyD2UJSESgw6mUG7BEGwNb0OW6e26iHYup0"}
+= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
+= javascript_include_tag "application", "data-turbolinks-track" => true
+= csrf_meta_tags

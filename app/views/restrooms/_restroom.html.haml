@@ -1,0 +1,38 @@
+- unisex_class = restroom.unisex? ? '' : 'not_unisex'
+- accessible_class = restroom.accessible? ? '' : 'not_accessible'
+- changing_table_class = restroom.changing_table? ? '' : 'no_changing_table'
+
+%div{ class: "listItem #{unisex_class} #{accessible_class} #{changing_table_class}",
+          data: { id: restroom.id} }
+  .listItemImage
+    / image tag goes here
+  .itemInfo
+    .itemName= link_to_unless_current(restroom.name.titleize, restroom)
+    .itemStreet="#{restroom.street}, #{restroom.city}, #{restroom.state}"
+    - if restroom.rated?
+      - rating_class_name = case RatingLevel.for_restroom(restroom)
+      - when RatingLevel.green  then 'greenRating'
+      - when RatingLevel.yellow then 'yellowRating'
+      - when RatingLevel.red    then 'redRating'
+      - else ''
+      %div{:class => "itemRating #{rating_class_name}"}
+        = t('restroom.rating.positive', percentage: restroom.rating_percentage.round)
+    - else
+      .itemRating= t('restroom.rating.unrated')
+
+  .itemExtraInfo
+    .itemDistance
+      - if restroom.respond_to?(:distance)
+        = restroom.distance.round(2)
+        miles /
+        = miles_to_kilometers(restroom.distance).round(2)
+        kilometers
+    - if restroom.unisex?
+      .unisexRestroom
+        %i.fa.fa-transgender-alt.fa-3x
+    - if restroom.accessible?
+      .ADARestroom
+        %i.fa.fa-wheelchair.fa-3x
+    - if restroom.changing_table?
+      .changingTable
+        %i.fa.fa-child.fa-3x

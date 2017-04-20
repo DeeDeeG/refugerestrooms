@@ -1,67 +1,61 @@
 source 'https://rubygems.org'
-ruby '2.0.0'
+ruby '2.3.1'
 
-gem 'dotenv-rails', :groups => [:development, :test]
-
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0'
-
-# Use postgres as the database for Active Record because its default for Heroku
+gem 'rails', '~> 4.2.5.2'
 gem 'pg'
-
-# Use pg_search for powerful full-text searching on postgres
 gem 'pg_search'
-
-# Use SCSS for stylesheets
-gem 'sass-rails'
+gem 'sass-rails', '~> 5.0'
 gem 'bootstrap-sass'
-
-# Heroku support
+gem 'haml'
 gem 'rails_12factor'
-
-# Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
-
-# Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
-
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
-
-# Use jquery as the JavaScript library
 gem 'jquery-rails'
-
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
-
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
+gem 'piwik_analytics', '~> 1.0.2'
 
-# Use Gecoder for easy searching of lat/long data
-gem 'geocoder'
+gem 'geocoder', '~> 1.2.1'
+gem 'activeadmin', '1.0.0.pre2'
+gem 'devise', '~> 3.2'
+gem 'rakismet'
 
-# Use Active Admin
-gem 'activeadmin', git: 'https://github.com/gregbell/active_admin.git'
-
-# Use country_select plugin
 gem 'country_select'
 
-# Use mail_form
 gem 'mail_form'
-gem 'simple_form'
+gem 'simple_form', '~> 3.0.2'
 
-# Use grape for REST-ful an API
-gem 'grape'
-gem 'grape-swagger'
+gem 'grape', '0.7.0'
+gem 'grape-swagger', '~> 0.7.2'
 gem 'grape-kaminari'
+gem 'kaminari'
+gem 'high_voltage', '~> 2.4.0'
 
-# RSpec for REST-ful API testing
+# Bugsnag sends bug alerts caught in production.
+# It's free for open source projects.
+gem 'bugsnag'
+
+gem 'rack-contrib'
+gem 'rack-cors', :require => 'rack/cors'
+
 group :development, :test do
-  gem 'rspec-rails', '~> 3.0.0.beta'
+  gem 'rspec-rails', '~> 3.5'
   gem "factory_girl_rails", "~> 4.0"
+  gem 'dotenv-rails'
+  gem 'pry', '~> 0.9.12.6'
+  gem 'quiet_assets', '~> 1.0.2'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
-gem 'kaminari'
+group :test do
+  gem 'rake'
+  gem 'cucumber-rails', '~> 1.4.1', require: false
+  gem 'database_cleaner'
+  gem 'simplecov', '~> 0.7.1', require: false
+  gem 'poltergeist'
+  gem 'webmock', '~> 1.18.0'
+end
 
 # Use foursquare-api
 gem 'foursquare2'
@@ -69,22 +63,5 @@ gem 'foursquare2'
 gem 'redis'
 
 group :doc do
-  # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
-
-group :test do
-  gem 'minitest-rails', '~> 0.9.2'
-end
-
-# Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]

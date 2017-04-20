@@ -4,9 +4,6 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
-# Ignore bundler config.
-/.bundle
-
 # Ignore the default SQLite database.
 /db/*.sqlite3
 /db/*.sqlite3-journal
@@ -38,6 +35,18 @@ geocoder.rb
 /.bundle
 /vendor/bundle
 .env
+.powrc
 
 ## Ignore .DS_Store files in case people haven't setup a global gitignore
 .DS_Store
+
+## editor temp files
+*.swp
+*.swo
+
+## Vagrant working directory
+.vagrant
+ruby
+
+## zsh rake pugin
+.rake_tasks

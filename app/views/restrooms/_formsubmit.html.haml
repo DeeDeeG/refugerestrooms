@@ -1,0 +1,25 @@
+%h1= t('restroom.add_new')
+
+= simple_form_for @restroom, html: {class: 'submit-new-bathroom-form form-vertical'} do |f|
+  %h5= t('restroom.required')
+  .clearfix
+    %button.btn.btn-light-purple.guess-btn{:type => "button", :value => t('restroom.guess_location')}
+      = t('restroom.guess_location')
+      %i.fa.fa-refresh.fa-spin
+
+  .nearby-container.footroom
+    // Content of nearby restrooms gets rendered here.
+
+  = f.input :name, :required => true
+  = f.input :street, :required => true
+  = f.input :city, :required => true
+  = f.input :state, :required => true
+  = f.input :country, priority: ["United States", "Canada", "United Kingdom"], :required => true, input_html: {class: 'form-control'}
+  = f.hidden_field :latitude
+  = f.hidden_field :longitude
+  = f.input :accessible, :collection => [[t('restroom.accessible'), true], [t('restroom.not_accessible'), false]], :include_blank => false
+  = f.input :unisex, :collection => [[t('restroom.type.unisex'), true], [t('restroom.type.single_stall'), false]], :include_blank => false
+  = f.input :changing_table, :collection => [[t('restroom.changing_table'), true], [t('restroom.no_changing_table'), false]], :include_blank => false
+  = f.input :directions, :placeholder => t('restroom.directions_hint'), :as => :text, :required => false, :input_html => { :class => "span6" }
+  = f.input :comment, :placeholder => t('restroom.comments_hint'), :as => :text, :required => false, :input_html => { :class => "span6" }
+  = f.button :submit, t('restroom.restsubmit'), :class => "linkbutton"
