@@ -1,0 +1,13 @@
+{
+    "name": "refuge-box-test",
+    "description": "Refuge box based on Ubuntu 14.04.2 LTS 64-bit.",
+    "versions": [{
+        "version": "0.1.0",
+        "providers": [{
+                "name": "virtualbox",
+                "url": "https://www.dropbox.com/s/pc7wi24swy5iql2/refugerestrooms-box-test-1.0.box",
+                "checksum_type": "sha1",
+                "checksum": "8fbc9830b98f75ab2268d9c8ae0d95fe38c8a025"
+        }]
+    }]
+}

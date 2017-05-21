@@ -6,8 +6,21 @@ VAGRANTFILE_API_VERSION = "2"
 BOXNAME = "refugerestrooms"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  # Ubuntu 14.04 base box
-  config.vm.box = "ubuntu/trusty64"
+  
+# Ubuntu 14.04 base box, not yet provisioned for Refuge. This is the old way. 
+# Uncomment this one line, and comment out the new way below, to restore the 
+# old way. This is a safe and reasonable fallback option. Restore the old way
+# if things aren't working, or if you have changed the Gemfile or other major
+# server components, and need a blank slate to start from.
+  # config.vm.box = "ubuntu/trusty64"
+
+# Ubuntu 14.04 base box provisioned for Refuge Restrooms.
+# This is the new way. There are some situations where you might want
+# to switch back to the old way. To switch back to the old way, comment
+# out these two lines, and uncomment the one line of the old way above.
+  config.vm.box = "refuge-box-test"
+  config.vm.box_url = "https://github.com/DeeDeeG/refugerestrooms/blob/vagrant-box-and-catalog-test/refuge-restrooms-vagrant-boxes.json"
+
   config.vm.hostname = BOXNAME
   #config.vm.box_download_checksum = 
 
