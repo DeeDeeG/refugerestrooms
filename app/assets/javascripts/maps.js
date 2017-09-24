@@ -31,7 +31,7 @@ function getPoint(string, callback){
 
 
 		//google Geocoding API
-		var url = "http://maps.googleapis.com/maps/api/geocode/json?address=" + string.replace(" ", "+") + "&sensor=false";
+		var url = "http://maps.googleapis.com/maps/api/geocode/json?address=" + string.replace(" ", "+");
 		$.get( url, function( data ) {
 			if(data && data.results){
 				if(data.results.length > 0){
@@ -267,5 +267,11 @@ $(function(){
 	var $map = $('#mapArea');
 	if($map.length > 0) {
 		initMap($map.data('latitude'), $map.data('longitude'), showMarkerImage);
+	}
+
+	window.Maps = {
+		reloadMap: function(map) {
+			initMap(map.dataset.latitude, map.dataset.longitude, showMarkerImage);
+		}
 	}
 });

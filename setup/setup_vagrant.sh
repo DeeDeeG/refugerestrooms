@@ -54,7 +54,7 @@ eval "$(rbenv init -)"
 export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 
 # Install ruby
-ruby_version=`cat $REFUGE_PATH/.ruby-version`
+ruby_version=$(cat $REFUGE_PATH/.ruby-version | tr -d '\n\r')
 if rbenv versions | grep $ruby_version; then
   echo 'ruby '$ruby_version' installed, skipping...'
 else
@@ -62,13 +62,21 @@ else
   rbenv install $ruby_version
 fi
 
+# Set local ruby version
+rbenv local $ruby_version
+
 # Install bundle reqs
 cd $REFUGE_PATH
-if which bundle; then
+if which bundle | grep 1.12.15; then
   echo 'bundler installed, skipping'
 else
   echo 'Installing bundler...'
-  gem install bundler --no-rdoc --no-ri -q
+
+  # We must target a specific version of bundler
+  # which is specified in vagrant.gemspec.
+  # File found here: https://github.com/mitchellh/vagrant/blob/a4c7bb822873924619f95edc9baee654fb3d6f1f/vagrant.gemspec#L23
+  # Please see https://github.com/mitchellh/vagrant/issues/7193#issuecomment-204309088 for info
+  gem install bundler -v 1.12.5 --no-rdoc --no-ri -q
 fi
 echo 'Running bundle install...'
 bundle install --gemfile=$REFUGE_PATH/Gemfile

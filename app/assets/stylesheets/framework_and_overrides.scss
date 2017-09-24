@@ -1,0 +1,36 @@
+@import 'bootstrap';
+
+// import the CSS framework
+// make all images responsive by default
+
+body {
+    overflow-x: hidden;
+    font-family: $font-stack;
+    font-size: 1.4em;
+    background: white;
+    color: $base-color;
+}
+
+img {
+    @extend .img-responsive;
+    margin: 0 auto;
+}
+
+header {
+    background-color: $purple;
+}
+// THESE ARE EXAMPLES YOU CAN MODIFY
+// create your own classes
+// to make views framework-neutral
+
+// apply styles to HTML elements
+// to make views framework-neutral
+
+// This fixes Bootstrap from messing with Google Maps CSS
+#mapArea img {
+    max-width: none;
+}
+#mapArea label {
+    width: auto;
+    display: inline;
+}
