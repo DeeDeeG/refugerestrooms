@@ -25,7 +25,6 @@ gem 'grape-swagger', '~> 0.7.2'
 gem 'grape-kaminari'
 gem 'kaminari'
 gem 'high_voltage', '~> 3.0.0'
-gem 'bugsnag'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'rack-jsonp'
 
