@@ -22,7 +22,9 @@ docker-compose up
 docker-compose down
 ```
 
-It will be available at localhost:3000
+It will be available at `localhost:3000`
+
+(If you are using Docker Toolbox, try `192.168.99.100:3000`)
 
 ### 5 Run the Tests
 ```
