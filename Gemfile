@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 ruby '2.3.1'
 
 gem 'rails', '5.1.4'
+gem 'rails-i18n'
 gem 'pg'
 gem 'pg_search'
 gem 'sass-rails'
