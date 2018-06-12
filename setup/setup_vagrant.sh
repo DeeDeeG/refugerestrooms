@@ -17,6 +17,7 @@ packages=(
   ["gcc"]=""
   ["make"]=""
   ["libssl-dev"]=""
+  ["zlib1g-dev"]=""
 )
 
 sudo apt-get update
