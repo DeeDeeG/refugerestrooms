@@ -11,7 +11,7 @@ packages=(
   ["git"]="=1:2.17.1-1ubuntu0.1"
   ["libreadline-dev"]=""
   ["nodejs"]="=8.10.0~dfsg-2"
-  ["phantomjs"]="=1.9.0-1"
+  ["phantomjs"]="=2.1.1+dfsg-2"
   ["postgresql-server-dev-9.3"]=""
   ["postgresql-contrib-9.3"]=""
 )
