@@ -15,6 +15,7 @@ packages=(
   ["postgresql-server-dev-10"]=""
   ["postgresql-contrib"]=""
   ["gcc"]=""
+  ["make"]=""
 )
 
 sudo apt-get update
