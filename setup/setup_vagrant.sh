@@ -16,7 +16,7 @@ packages=(
   ["postgresql-contrib"]=""
   ["gcc"]=""
   ["make"]=""
-  ["libssl-dev"]=""
+  ["libssl1.0-dev"]=""
   ["zlib1g-dev"]=""
 )
 
