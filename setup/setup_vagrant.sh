@@ -41,7 +41,7 @@ if ! grep -q 'rbenv init' $HOME/.bashrc; then
   echo 'eval "$(rbenv init -)"' >> ~/.bashrc
 fi
 if ! [ -d ~/.rbenv/plugins/ruby-build ]; then
-  git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+  git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
 fi
 if ! grep -q ruby-build $HOME/.bashrc; then
   echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
