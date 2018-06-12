@@ -32,7 +32,7 @@ done
 echo 'installing rbenv...'
 cd
 if ! [ -d .rbenv ]; then
-  git clone https://github.com/sstephenson/rbenv.git .rbenv
+  git clone https://github.com/rbenv/rbenv.git .rbenv
 fi
 if ! grep -q '.rbenv/bin' $HOME/.bashrc; then
   echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
