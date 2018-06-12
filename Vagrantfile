@@ -6,8 +6,8 @@ VAGRANTFILE_API_VERSION = "2"
 BOXNAME = "refugerestrooms"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  # Ubuntu 14.04 base box
-  config.vm.box = "ubuntu/trusty64"
+  # Ubuntu 18.04 base box
+  config.vm.box = "ubuntu/bionic64"
   config.vm.hostname = BOXNAME
   #config.vm.box_download_checksum = 
 
