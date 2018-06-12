@@ -14,6 +14,7 @@ packages=(
   ["phantomjs"]="=2.1.1+dfsg-2"
   ["postgresql-server-dev-10"]=""
   ["postgresql-contrib"]=""
+  ["gcc"]=""
 )
 
 sudo apt-get update
