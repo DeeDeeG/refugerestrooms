@@ -10,7 +10,7 @@ declare -A packages
 packages=(
   ["git"]="=1:2.17.1-1ubuntu0.1"
   ["libreadline-dev"]=""
-  ["nodejs"]="=0.10.25~dfsg2-2ubuntu1"
+  ["nodejs"]="=8.10.0~dfsg-2"
   ["phantomjs"]="=1.9.0-1"
   ["postgresql-server-dev-9.3"]=""
   ["postgresql-contrib-9.3"]=""
