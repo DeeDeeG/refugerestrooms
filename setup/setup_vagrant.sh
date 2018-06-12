@@ -16,6 +16,7 @@ packages=(
   ["postgresql-contrib"]=""
   ["gcc"]=""
   ["make"]=""
+  ["libssl-dev"]=""
 )
 
 sudo apt-get update
