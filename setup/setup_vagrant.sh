@@ -82,7 +82,7 @@ echo 'Running bundle install...'
 bundle install --gemfile=$REFUGE_PATH/Gemfile
 
 # Change permissions on pg_hba.conf
-pg_hba=/etc/postgresql/9.3/main/pg_hba.conf
+pg_hba=/etc/postgresql/10/main/pg_hba.conf
 sudo cp "$REFUGE_PATH/setup/pg_hba.conf" $pg_hba
 sudo chown postgres:postgres $pg_hba
 sudo chmod 640 $pg_hba
