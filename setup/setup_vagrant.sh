@@ -1,6 +1,6 @@
 #!/bin/bash
 # This script is run from vagrant to setup packages
-# It's only tested with ubuntu 14.04
+# It will only work with ubuntu 18.04
 set -e
 
 REFUGE_PATH=/vagrant
