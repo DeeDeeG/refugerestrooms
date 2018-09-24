@@ -1,15 +1,15 @@
 %footer
   .footer
     %a.iconLink{:href => "https://github.com/RefugeRestrooms/refugerestrooms", :aria => { :label => t('.aria-labels.github')}}
-      %i.icon.fa.fa-github-square.fa-3x
+      %i.icon.fa.fa-github-square.fa-3x{:aria-role => "img"}
     %a.iconLink{:href => "https://twitter.com/refugerestrooms", :aria => { :label => t('.aria-labels.twitter')}}
-      %i.icon.fa.fa-twitter-square.fa-3x
+      %i.icon.fa.fa-twitter-square.fa-3x{:aria-role => "img"}
     %a.iconLink{:href => "https://www.facebook.com/refugerestrooms", :aria => { :label => t('.aria-labels.facebook')}}
-      %i.icon.fa.fa-facebook-square.fa-3x
+      %i.icon.fa.fa-facebook-square.fa-3x{:aria-role => "img"}
     %a.iconLink{:href => "http://blog.refugerestrooms.org/", :aria => { :label => t('.aria-labels.tumblr')}}
-      %i.icon.fa.fa-tumblr-square.fa-3x
+      %i.icon.fa.fa-tumblr-square.fa-3x{:aria-role => "img"}
     %a.iconLink{:href => contact_path, :aria => { :label => t('.aria-labels.email')}}
-      %i.icon.fa.fa-envelope.fa-3x
+      %i.icon.fa.fa-envelope.fa-3x{:aria-role => "img"}
     %br/
     = t('.refuge-restrooms-is-open-source')
     %a{:href => "https://github.com/RefugeRestrooms/refugerestrooms"} #{t('.code-on-github')}
@@ -18,4 +18,4 @@
     %a{:href => "https://patreon.com/refugerestrooms"} #{t('.on-patreon')}
     %br/
     = "\&copy; #{t('.copyleft')}  #{Date.today.year} #{t('.refuge-restrooms')}".html_safe
-
+    
