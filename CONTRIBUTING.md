@@ -3,60 +3,35 @@
 ## Setting Up Development Environment
 
 ### 1 Fork and clone the repository.
-https://help.github.com/articles/fork-a-repo/
 
-### 2 Install Docker.
-https://docs.docker.com/install/
+### 2 Install Vagrant.
+https://www.vagrantup.com/downloads.html
 
-### 3 Build the Docker Container
-Build the container from any [terminal](https://github.com/RefugeRestrooms/refugerestrooms/wiki/What-is-a-Terminal-(or-%22Terminal-Emulator%22)%3F-How-do-I-run-text-based-commands-on-my-computer%3F) program with:
-```
-docker-compose build
-```
+### 3 Install VirtualBox
+https://www.virtualbox.org/wiki/Downloads
 
-### 4 Run the Docker Container
+### 4 Capture the powers of vagrant
+  * In the repo dir: <code>vagrant up</code> (Safely ignore: 'dpkg-preconfigure: unable to re-open stdin: No such file or directory')
+  * If changes have been made since running vagrant up: <code>vagrant provision</code>
+  
+  * Start the rails server. There are two ways to do this, depending on your familiarity running from within the vagrant shell:
 
-You can now run the app with:
-```
-docker-compose up
-```
+    1. A local `rake` wrapper that allows direct execution on the machine.
+        * Run `rake vagrant:shell[command]`<sup>1</sup>
+        * To start the rails server using the rake wrapper use: `rake vagrant:shell['rails s -b 0.0.0.0']`.         
+        * Navigate to `localhost:3000`
+    2. Using `vagrant ssh` to gain access directly to the machine.
+        * To login to the machine: <code>vagrant ssh</code>
+        * `cd  /vagrant/` to navigate to the refuge repo.
+        * To start the rails server use: `rails s -b 0.0.0.0`. 
+        * Navigate to `localhost:3000`
 
-The container will be reachable at this address: `localhost:3000`
+  [1] You can run any command locally using `rake vagrant:shell[]` and it will be executed in the repo root of the vagrant machine. You can try `rake vagrant:shell['pwd']` and see it will print the directory that the repo is in on the vagrant machine!
 
-_(Point your web browser at `localhost:3000` or `127.0.0.1:3000`, or even `[IP address of computer running the container]:3000` from any computer on the same LAN. The last method is useful for testing the app/site on smart phones and tablets.)_
+### 5 Optional tasks:
+run <code>rake db:fix_accents</code> to clean up encoding problems in the safe2pee data. (Use <code>rake db:fix_accents[dry_run]</code> to preview the changes.)
 
-### 5 Do some Development
-
-Files are shared between your computer and the Docker machine. If you update a file on your computer, the change should show up on the Docker machine, and vice-versa.
-
-If you need to run commands on the Docker container directly, run this:
-```
-docker-compose run web bash
-```
-_(This will give you a full interactive terminal session running on the Docker machine. You can (for example) run `bundle update` to update the Gems in the Gemfile to more recent versions.)_
-
-Occasionally, you might need to rebuild the Docker machine so it picks up major updates (such as a new version of Ruby, or an updated Gemfile). To do so, run `docker-compose down` and `docker-compose build`.
-
-### 6 Run the Tests
-```
-docker-compose run -e "RAILS_ENV=test" web rake db:test:prepare spec
-```
-_(If you want to know if your changes pass our automated testing, before even submitting your changes to RefugeRestrooms on Github, this will let you know.)_
-
-### 7 Shut down the Docker Container:
-In another terminal window, run:
-```
-docker-compose down
-```
-_(Shutting down the container in this way is safer than exiting with `Ctrl + C` or `Cmd + C`, and prevents issues with breaking the `db` container.)_
-
-### 8 Optional tasks:
-To clean up encoding problems in the safe2pee data, run (Use `rake db:fix_accents[dry_run]` to preview the changes.):
-```
-docker-compose run rake db:fixaccents
-```
-
-### Assets
+### 6 Assets
 * [Assets Repo](https://github.com/RefugeRestrooms/refuge_assets)
 
 ## Testing
