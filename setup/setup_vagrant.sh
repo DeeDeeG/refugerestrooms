@@ -51,7 +51,7 @@ do
   fi
 done
 
-# Install rbenv and ruby-build
+# Install rbenv and rvm-download
 echo 'installing rbenv...'
 cd
 if ! [ -d .rbenv ]; then
@@ -63,11 +63,11 @@ fi
 if ! grep -q 'rbenv init' $HOME/.bashrc; then
   echo 'eval "$(rbenv init -)"' >> ~/.bashrc
 fi
-if ! [ -d ~/.rbenv/plugins/ruby-build ]; then
-  git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+if ! [ -d ~/.rbenv/plugins/rvm-download ]; then
+  git clone https://github.com/garnieretienne/rvm-download.git ~/.rbenv/plugins/rvm-download
 fi
-if ! grep -q ruby-build $HOME/.bashrc; then
-  echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
+if ! grep -q rvm-download $HOME/.bashrc; then
+  echo 'export PATH="$HOME/.rbenv/plugins/rvm-download/bin:$PATH"' >> ~/.bashrc
 fi
 
 # source .bashrc doesn't appear to be setting the path
@@ -82,7 +82,7 @@ if rbenv versions | grep $ruby_version; then
   echo 'ruby '$ruby_version' installed, skipping...'
 else
   echo 'install ruby '$ruby_version
-  rbenv install $ruby_version
+  rbenv download $ruby_version
 fi
 
 # Set local ruby version
