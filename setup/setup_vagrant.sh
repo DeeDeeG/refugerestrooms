@@ -4,6 +4,29 @@
 set -e
 
 REFUGE_PATH=/vagrant
+PHANTOM_JS=2.1.1
+
+# Add the apt repository for yarn
+curl -sS http://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
+echo "deb http://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+
+# Add the apt-repository for the latest node.js
+curl -sL https://deb.nodesource.com/setup_8.x | bash -
+
+apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
+apt-get install build-essential chrpath libssl-dev libxft-dev -y && \
+  apt-get install libfreetype6 libfreetype6-dev -y && \
+  apt-get install libfontconfig1 libfontconfig1-dev -y && \
+  cd ~ && \
+  export PHANTOM_JS="phantomjs-2.1.1-linux-x86_64" && \
+  wget https://github.com/Medium/phantomjs/releases/download/v2.1.1/$PHANTOM_JS.tar.bz2 && \
+  tar xvjf $PHANTOM_JS.tar.bz2 && \
+  mv $PHANTOM_JS /usr/local/share && \
+  ln -sf /usr/local/share/$PHANTOM_JS/bin/phantomjs /usr/local/bin && \
+  apt-get install -y yarn
+
+# Install Node.js dependencies using yarn
+yarn --pure-lockfile
 
 # required packages
 declare -A packages
