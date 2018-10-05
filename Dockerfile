@@ -8,7 +8,7 @@ RUN apk update && apk upgrade \
     && apk --no-cache add $POSTGRES $RAILS $YARN \
     && apk --no-cache add --virtual build-dependencies build-base
 
-RUN yarn global add phantomjs-prebuilt@2.1.10
+RUN yarn global add phantomjs-prebuilt@2.1.16
 
 WORKDIR /refugerestrooms
 
