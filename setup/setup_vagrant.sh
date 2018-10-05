@@ -20,10 +20,6 @@ sudo apt-get install -y chrpath libssl1.0-dev libxft-dev && \
   sudo apt-get install -y libfreetype6 libfreetype6-dev && \
   sudo apt-get install -y libfontconfig1 libfontconfig1-dev
 
-# Install Yarn
-echo 'installing yarn'
-sudo apt-get install -y yarn
-
 # required packages
 declare -A packages
 packages=(
@@ -32,6 +28,7 @@ packages=(
   ["postgresql-server-dev-10"]=""
   ["phantomjs"]="2.1.1+dfsg-2"
   ["postgresql-contrib"]=""
+  ["yarn"]=""
 )
 
 sudo apt-get update
