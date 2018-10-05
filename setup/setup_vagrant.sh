@@ -4,7 +4,6 @@
 set -e
 
 REFUGE_PATH=/vagrant
-PHANTOM_JS=2.1.1
 
 # Add the apt repository for yarn
 curl -sS http://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - && \
@@ -21,13 +20,6 @@ sudo apt-get install -y chrpath libssl1.0-dev libxft-dev && \
   sudo apt-get install -y libfreetype6 libfreetype6-dev && \
   sudo apt-get install -y libfontconfig1 libfontconfig1-dev
 
-# Install Phantom JS
-export PHANTOM_JS="phantomjs-2.1.1-linux-x86_64" && \
-  wget https://github.com/Medium/phantomjs/releases/download/v2.1.1/$PHANTOM_JS.tar.bz2 && \
-  tar xvjf $PHANTOM_JS.tar.bz2 && \
-  sudo mv $PHANTOM_JS /usr/local/share && \
-  sudo ln -sf /usr/local/share/$PHANTOM_JS/bin/phantomjs /usr/local/bin && \
-
 # Install Yarn
 echo 'installing yarn'
 sudo apt-get install -y yarn
@@ -38,6 +30,7 @@ packages=(
   ["git"]=""
   ["libreadline-dev"]=""
   ["postgresql-server-dev-10"]=""
+  ["phantomjs"]="2.1.1+dfsg-2"
   ["postgresql-contrib"]=""
 )
 
