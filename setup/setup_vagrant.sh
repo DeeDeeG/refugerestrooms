@@ -25,7 +25,7 @@ fi
 # Install a bunch of required packages
 #(Who knows if these are actually needed??)
 
-sudo apt-get update -qq && sudo apt-get install -y build-essential libpq-dev nodejs
+sudo apt-get update -qq && sudo apt-get install -y build-essential libpq-dev
 sudo apt-get install -y chrpath libssl1.0-dev libxft-dev && \
   sudo apt-get install -y libfreetype6 libfreetype6-dev && \
   sudo apt-get install -y libfontconfig1 libfontconfig1-dev
@@ -35,6 +35,7 @@ declare -A packages
 packages=(
   ["git"]=""
   ["libreadline-dev"]=""
+  ["nodejs"]=""
   ["postgresql-server-dev-10"]=""
   ["phantomjs"]="2.1.1+dfsg-2"
   ["postgresql-contrib"]=""
