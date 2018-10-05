@@ -1,6 +1,6 @@
 #!/bin/bash
 # This script is run from vagrant to setup packages
-# It's only tested with ubuntu 14.04
+# It's only tested with ubuntu 18.04
 set -e
 
 REFUGE_PATH=/vagrant
@@ -14,7 +14,7 @@ echo "deb http://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources
 curl -sL https://deb.nodesource.com/setup_8.x | sudo bash -
 
 sudo apt-get update -qq && sudo apt-get install -y build-essential libpq-dev nodejs
-sudo apt-get install build-essential chrpath libssl-dev libxft-dev -y && \
+sudo apt-get install build-essential chrpath libssl1.0-dev libxft-dev -y && \
   sudo apt-get install libfreetype6 libfreetype6-dev -y && \
   sudo apt-get install libfontconfig1 libfontconfig1-dev -y && \
   export PHANTOM_JS="phantomjs-2.1.1-linux-x86_64" && \
@@ -29,8 +29,8 @@ declare -A packages
 packages=(
   ["git"]=""
   ["libreadline-dev"]=""
-  ["postgresql-server-dev-9.3"]=""
-  ["postgresql-contrib-9.3"]=""
+  ["postgresql-server-dev-10"]=""
+  ["postgresql-contrib"]=""
 )
 
 sudo apt-get update
@@ -97,7 +97,7 @@ bundle install --gemfile=$REFUGE_PATH/Gemfile
 yarn --pure-lockfile
 
 # Change permissions on pg_hba.conf
-pg_hba=/etc/postgresql/9.3/main/pg_hba.conf
+pg_hba=/etc/postgresql/10/main/pg_hba.conf
 sudo cp "$REFUGE_PATH/setup/pg_hba.conf" $pg_hba
 sudo chown postgres:postgres $pg_hba
 sudo chmod 640 $pg_hba
