@@ -14,8 +14,13 @@ else
   echo 'the Yarn repository is already configured. skipping...'
 fi
 
-# Add the apt-repository for the latest node.js
-curl -sL https://deb.nodesource.com/setup_8.x | sudo bash -
+# Add the APT repository for the latest Node.js
+echo 'Adding the Node.js APT repository'
+if [ ! -f /etc/apt/sources.list.d/nodesource.list ]; then
+  curl -sL https://deb.nodesource.com/setup_8.x | sudo bash -
+else
+  echo 'the Node.js repository is already configured. skipping...'
+fi
 
 # Install a bunch of required packages
 #(Who knows if these are actually needed??)
