@@ -45,42 +45,31 @@ do
   fi
 done
 
-# Install rbenv and ruby-build
-echo 'installing rbenv...'
+# Install rvm
+echo 'installing rvm...'
 cd
-if ! [ -d .rbenv ]; then
-  git clone https://github.com/sstephenson/rbenv.git .rbenv
-fi
-if ! grep -q '.rbenv/bin' $HOME/.bashrc; then
-  echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
-fi
-if ! grep -q 'rbenv init' $HOME/.bashrc; then
-  echo 'eval "$(rbenv init -)"' >> ~/.bashrc
-fi
-if ! [ -d ~/.rbenv/plugins/ruby-build ]; then
-  git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
-fi
-if ! grep -q ruby-build $HOME/.bashrc; then
-  echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
+if ! [ -d .rvm ]; then
+  gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+
+  \curl -sSL https://get.rvm.io | bash -s stable
+else
+  echo 'rvm installed, skipping'
 fi
 
-# source .bashrc doesn't appear to be setting the path
-# adding the following for now:
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
+# Add rvm to PATH
+source /home/vagrant/.rvm/scripts/rvm
 
 # Install ruby
 ruby_version=$(cat $REFUGE_PATH/.ruby-version | tr -d '\n\r')
-if rbenv versions | grep $ruby_version; then
+if rvm list rubies | grep $ruby_version; then
   echo 'ruby '$ruby_version' installed, skipping...'
 else
   echo 'install ruby '$ruby_version
-  rbenv install $ruby_version
+  rvm install $ruby_version
 fi
 
 # Set local ruby version
-rbenv local $ruby_version
+rvm use $ruby_version
 
 # Install bundle reqs
 cd $REFUGE_PATH
