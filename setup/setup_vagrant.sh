@@ -6,8 +6,13 @@ set -e
 REFUGE_PATH=/vagrant
 
 # Add the apt repository for yarn
-curl -sS http://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - && \
-echo "deb http://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+echo 'Adding the Yarn APT repository'
+if [ ! -f /etc/apt/sources.list.d/yarn.list ]; then
+  curl -sS http://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - && \
+  echo "deb http://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+else
+  echo 'the Yarn repository is already configured. skipping...'
+fi
 
 # Add the apt-repository for the latest node.js
 curl -sL https://deb.nodesource.com/setup_8.x | sudo bash -
