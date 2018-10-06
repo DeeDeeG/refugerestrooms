@@ -26,11 +26,6 @@ fi
 # Install a bunch of required packages
 #(Who knows if these are actually needed??)
 
-sudo apt-get update -qq && sudo apt-get install -y build-essential libpq-dev
-sudo apt-get install -y chrpath libssl1.0-dev libxft-dev && \
-  sudo apt-get install -y libfreetype6 libfreetype6-dev && \
-  sudo apt-get install -y libfontconfig1 libfontconfig1-dev
-
 # Install PhantomJS
 echo 'Installing PhantomJS'
 if [ ! -d /usr/local/bin/phantomjs/ ]; then
