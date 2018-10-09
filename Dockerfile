@@ -1,9 +1,8 @@
 FROM ruby:2.3.7-slim
-ENV PHANTOM_JS=2.1.1
 
 # Add basic binaries and clean up the apt cache
 RUN apt-get update \
-  && apt-get install -y bzip2 curl gnupg wget \
+  && apt-get install -y bzip2 curl gnupg \
   && rm -rf /var/lib/apt/lists/*
 
 # Add the apt-repository for the latest node.js and install node.js
@@ -14,14 +13,6 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
 RUN curl -sS http://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
   echo "deb http://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
   apt-get update && apt-get install -y yarn
-
-# Install PhantomJS
-RUN cd ~ && \
-  export PHANTOM_JS="phantomjs-2.1.1-linux-x86_64" && \
-  wget https://github.com/Medium/phantomjs/releases/download/v2.1.1/$PHANTOM_JS.tar.bz2 && \
-  tar xvjf $PHANTOM_JS.tar.bz2 && \
-  mv $PHANTOM_JS /usr/local/share && \
-  ln -sf /usr/local/share/$PHANTOM_JS/bin/phantomjs /usr/local/bin
 
 # Establish working directory in Docker container's /refugerestrooms folder
 RUN mkdir /refugerestrooms
