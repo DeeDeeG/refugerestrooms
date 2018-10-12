@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 
-rails db:setup
+# Set up the development database, and seed with data from `db/export.csv`
+SEEDING_DONT_GEOCODE="true" rails db:setup
 
 exec "$@"
