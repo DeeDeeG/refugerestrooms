@@ -1,6 +1,15 @@
 #!/bin/bash
 set -e
 
+# Make sure we don't unnecessarily geo-code the `db/export.csv` entries,
+# Which are already geo-coded anyway. Saves quota usage.
+export SEEDING_DONT_GEOCODE="true"
+
+# Seed the development database with data from `db/export.csv`
+echo "Seeding the database"
 rails db:setup
+
+# Unset this variable, so that we can geo-code during development as usual.
+unset SEEDING_DONT_GEOCODE
 
 exec "$@"
