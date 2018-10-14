@@ -28,6 +28,7 @@ gem 'rack-jsonp'
 gem 'http_accept_language'
 gem 'puma'
 gem 'webpacker', '~> 3.5'
+gem 'bootsnap', require: false
 
 # Upgraded to 1.3.0 for Rails 5.2.1
 gem 'activeadmin', '~> 1.3.0'
