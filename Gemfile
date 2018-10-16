@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.3.7'
 
-gem 'rails', '5.1.4'
+gem 'rails', '5.2.1'
 gem 'pg'
 gem 'pg_search'
 gem 'sass-rails'
@@ -16,7 +16,7 @@ gem 'devise', '~> 4.3'
 gem 'rakismet'
 gem 'country_select'
 gem 'mail_form', '>= 1.7.0'
-gem 'simple_form', '~> 3.5'
+gem 'simple_form', '~> 4.0.0'
 gem 'grape', '1.1'
 gem 'grape-swagger', '~> 0.31'
 gem 'grape-kaminari'
@@ -28,9 +28,10 @@ gem 'rack-jsonp'
 gem 'http_accept_language'
 gem 'puma'
 gem 'webpacker', '~> 3.5'
+gem 'bootsnap', require: false
 
-# Upgraded to 1.0.0 for Rails 5.1.4
-gem 'activeadmin', '~> 1.0.0'
+# Upgraded to 1.3.0 for Rails 5.2.1
+gem 'activeadmin', '~> 1.3.0'
 
 group :production do
   gem 'rails_12factor'
