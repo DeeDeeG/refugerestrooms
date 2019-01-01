@@ -1,38 +1,35 @@
 FROM ruby:2.5.3-slim
-ENV PHANTOM_JS=2.1.1
 
 # Add basic binaries
 RUN apt-get update \
-  && apt-get install -y bzip2 curl gnupg wget
+  && apt-get install -y curl gcc libpq-dev make patch xz-utils \
+  # Clean up the apt cache
+  && rm -rf /var/lib/apt/lists/*
 
-# Add the apt repository for yarn
-RUN curl -sS http://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
-  echo "deb http://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+# Specify a version of Node.js to download and install
+ENV NODEJS_VER="v10.15.0"
 
-# Add the apt-repository for the latest node.js
-RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
+# Download and extract Nodejs from archive supplied by nodejs.org
+RUN curl https://nodejs.org/dist/$NODEJS_VER/node-$NODEJS_VER-linux-x64.tar.xz -o nodejs.tar.xz \
+  && tar xf nodejs.tar.xz
 
-RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
-RUN apt-get install build-essential chrpath libssl-dev libxft-dev -y && \
-  apt-get install libfreetype6 libfreetype6-dev -y && \
-  apt-get install libfontconfig1 libfontconfig1-dev -y && \
-  cd ~ && \
-  export PHANTOM_JS="phantomjs-2.1.1-linux-x86_64" && \
-  wget https://github.com/Medium/phantomjs/releases/download/v2.1.1/$PHANTOM_JS.tar.bz2 && \
-  tar xvjf $PHANTOM_JS.tar.bz2 && \
-  mv $PHANTOM_JS /usr/local/share && \
-  ln -sf /usr/local/share/$PHANTOM_JS/bin/phantomjs /usr/local/bin && \
-  apt-get install -y yarn
+# Add Node.js binaries to PATH (includes Node and NPM, will include Yarn)
+ENV PATH="/node-$NODEJS_VER-linux-x64/bin/:${PATH}"
 
-# Clean up the apt cache
-RUN rm -rf /var/lib/apt/lists/*
+# Install Yarn
+RUN npm install -g yarn
 
+# Install PhantomJS
+RUN yarn global add phantomjs-prebuilt
+
+# Make the "/refugerestrooms" folder, run all subsequent commands in that folder
 RUN mkdir /refugerestrooms
 WORKDIR /refugerestrooms
 
-COPY Gemfile /refugerestrooms/Gemfile
-COPY Gemfile.lock /refugerestrooms/Gemfile.lock
+# Install gems with Bundler
+COPY Gemfile Gemfile.lock /refugerestrooms/
 RUN bundle install
 
+# Install node packages with Yarn
 COPY package.json yarn.lock /refugerestrooms/
 RUN yarn --pure-lockfile
