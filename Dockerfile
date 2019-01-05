@@ -1,4 +1,4 @@
-FROM ruby:2.3.7-alpine3.7
+FROM ruby:2.5.3-alpine3.7
 
 ENV POSTGRES postgresql postgresql-dev
 ENV RAILS ruby-nokogiri tzdata
