@@ -7,14 +7,12 @@ RUN apt-get update \
   && rm -rf /var/lib/apt/lists/*
 
 # Download, extract and install PhantomJS from archive hosted at bitbucket
-RUN mkdir /phantomjs-extracted \
-  && curl -L https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2 -o phantomjs.tar.bz2 \
-  && tar -xjf phantomjs.tar.bz2 --strip-components=1 --directory=/phantomjs-extracted \
-  && cd /phantomjs-extracted \
-  && mv bin/phantomjs /usr/local/bin \
-  && cd / \
-  # Clean up the PhantomJS archive, and the extracted contents
-  && rm -rf /phantomjs-extracted /phantomjs.tar.bz2
+RUN export PHANTOMJS="phantomjs-2.1.1-linux-x86_64" \
+  && curl -L https://bitbucket.org/ariya/phantomjs/downloads/$PHANTOMJS.tar.bz2 -o phantomjs.tar.bz2 \
+  && tar xf phantomjs.tar.bz2 $PHANTOMJS/bin/phantomjs --strip-components=2 \
+  && mv ./phantomjs /usr/local/bin \
+  # Clean up the PhantomJS archive
+  && rm phantomjs.tar.bz2
 
 # Specify a version of Node.js to download and install
 ENV NODEJS_VERSION=v10.15.3
