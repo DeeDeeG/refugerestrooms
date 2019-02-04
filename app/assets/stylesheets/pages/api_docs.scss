@@ -1,9 +1,53 @@
 #swagger-ui-container {
   margin-top: 20px;
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
 
-  .info .title {
-    display: none;
+  .base-url, .parameter__default, .parameter__name, .url {
+    font-family: Ubuntu Mono, SF Mono, Segoe UI Mono, Roboto Mono, Inconsolata, Monaco, Menlo, Consolas, Courier New, monospace;
   }
+
+  .col {
+    padding: 14px 46px;
+    border-radius: 4px;
+  }
+
+  .col_header {
+    font-weight: bold;
+  }
+
+  .expand-operation, .info .title, .parameter__in {
+      display: none;
+    }
+
+  .opblock-body {
+    background-color: #e7f0f7;
+    border: 1px solid #c3d9ec;
+    padding: 30px;
+  }
+
+  .opblock-control__btn, .try-out__btn {
+    background-color: ghostwhite;
+    border-radius: 30px;
+    margin-top: 10px;
+    margin-right: 6px;
+  }
+
+  .opblock-get {
+    margin-bottom: 10px;
+  }
+
+  .opblock-tag {
+    font-size: 40px;
+    font-weight: 300;
+    text-transform: capitalize;
+
+    small {
+      display: none;
+    }
+  }
+
   .opblock-summary-get {
     background-color: #e7f0f7;
     border: 1px solid #c3d9ec;
@@ -12,20 +56,38 @@
 
     .opblock-summary-method {
       background-color: #0f6ab4;
+      border-radius: 2px;
       color: #fff;
-      margin: 5px;
-      padding: 5px;
+      margin-left: -5px;
+      padding: 6.5px 13px;
     }
-  }
 
-  .opblock-body {
-    background-color: #e7f0f7;
-    border: 1px solid #c3d9ec;
-    padding: 5px;
+    .opblock-summary-path {
+      margin-left: 18px;
+
+      a {
+        color: black;
+      }
+    }
   }
 
   .response-col_description pre {
     overflow: scroll;
     width: 80vw;
+  }
+
+  .responses-table td {
+    background-color: papayawhip;
+  }
+
+  .table-container {
+    .parameter__name {
+      font-weight: bold;
+      text-transform: capitalize;
+    }
+
+    td {
+      background-color: papayawhip;
+    }
   }
 }
