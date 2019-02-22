@@ -19,7 +19,11 @@
   }
 
   .expand-operation, .info .title, .parameter__in {
-      display: none;
+    display: none;
+  }
+
+  .highlight-code pre {
+    color: darkmagenta;
   }
 
   .opblock-body {
@@ -34,8 +38,9 @@
   }
 
   .opblock-control__btn, .try-out__btn {
-    background-image: linear-gradient();
-    border-radius: none;
+    background: linear-gradient(whitesmoke, lightgrey);
+    border: 1px solid darkgrey;
+    margin: 10px 0px;
   }
 
   .opblock-get {
@@ -92,15 +97,71 @@
   }
 
   .response-col_description pre {
+    min-width: 220px;
+    max-width: 720px;
     overflow: scroll;
     width: 80vw;
   }
 
-  .parameter__name {
-      font-weight: bold;
-      text-transform: capitalize;
+  @media screen and (max-width: 991px) {
+    .response-col_description pre {
+      max-width: 490px;
+    }
   }
 
+  @media screen and (max-width: 699px) {
+    .response-col_description pre {
+      max-width: 435px;
+    }
+  }
+
+  @media screen and (max-width: 640px) {
+    .response-col_status {
+      padding-left: 0px;
+    }
+
+    .response-col_description pre {
+      max-width: 450px;
+    }
+  }
+
+  @media screen and (max-width: 569px) {
+    .response-col_description pre {
+      max-width: 380px;
+    }
+  }
+
+  @media screen and (max-width: 499px) {
+    .response-col_description pre {
+      max-width: 310px;
+    }
+  }
+
+  @media screen and (max-width: 429px) {
+    .response-col_description pre {
+      max-width: 240px;
+    }
+  }
+
+  @media screen and (max-width: 359px) {
+    .response-col_description {
+      padding-left: 10px;
+    }
+  }
+
+  .response-col_status {
+    padding-right: 0px;
+  }
+
+  .parameter__name {
+    font-weight: bold;
+    text-transform: capitalize;
+  }
+/*
+  .table-container, .responses-inner {
+    background-color: white;
+  }
+*/
   pre {
     background-color: #fcf6db;
     border: 1px solid #e5e0c6;
