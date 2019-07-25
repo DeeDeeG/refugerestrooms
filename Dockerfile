@@ -16,7 +16,7 @@ RUN curl -L https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linu
   && rm -rf phantomjs-2.1.1-linux-x86_64/
 
 # Specify a version of Node.js to download and install
-ENV NODEJS_VERSION=v10.15.3
+ENV NODEJS_VERSION=v10.16.0
 
 # Download and extract Node.js from archive supplied by nodejs.org
 RUN curl -L https://nodejs.org/dist/$NODEJS_VERSION/node-$NODEJS_VERSION-linux-x64.tar.xz -o nodejs.tar.xz \
