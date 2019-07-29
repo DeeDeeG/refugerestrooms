@@ -2,7 +2,7 @@ FROM ruby:2.5.5-slim
 
 # Add basic binaries
 RUN apt-get update \
-  && apt-get install -y curl g++ gcc libfontconfig libpq-dev make patch xz-utils \
+  && apt-get install -y curl firefox-esr g++ gcc libfontconfig libpq-dev make patch xz-utils \
   # Clean up the apt cache
   && rm -rf /var/lib/apt/lists/*
 
