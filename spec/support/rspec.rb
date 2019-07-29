@@ -1,16 +1,16 @@
-require 'capybara/poltergeist'
 require 'capybara/rspec'
 require 'rspec/rails'
 # spec/spec_helper.rb
 #
 
-Capybara.register_driver :poltergeist_debug do |app|
-  Capybara::Poltergeist::Driver.new(app,
-    :js_errors => false
-  )
+Capybara.register_driver :firefox_headless do |app|
+  options = ::Selenium::WebDriver::Firefox::Options.new
+  options.args << '--headless'
+
+  Capybara::Selenium::Driver.new(app, browser: :firefox, options: options)
 end
 
-Capybara.javascript_driver = :poltergeist_debug
+Capybara.javascript_driver = :firefox_headless
 
 WebMock.disable_net_connect!(allow_localhost: true)
 
