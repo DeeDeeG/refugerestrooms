@@ -50,7 +50,6 @@ end
 group :test do
   gem 'capybara'
   gem 'database_cleaner'
-  gem 'poltergeist'
   gem 'geckodriver-helper'
   gem 'selenium-webdriver'
   gem 'simplecov', '~> 0.7.1', require: false
