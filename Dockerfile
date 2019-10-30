@@ -13,7 +13,7 @@ ENV NODEJS_MAJOR_VERSION=10
 ENV DISTRIBUTION_CODENAME=buster
 
 # Add the Node.js apt package repository 
-RUN echo 'deb https://deb.nodesource.com/node_${NODEJS_MAJOR_VERSION}.x ${DISTRIBUTION_CODENAME} main' > /etc/apt/sources.list.d/nodesource.list \
+RUN echo "deb https://deb.nodesource.com/node_${NODEJS_MAJOR_VERSION}.x ${DISTRIBUTION_CODENAME} main" > /etc/apt/sources.list.d/nodesource.list \
   && curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
 
 # Add basic binaries (second pass)
