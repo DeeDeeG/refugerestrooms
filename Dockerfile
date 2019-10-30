@@ -1,5 +1,11 @@
 FROM ruby:2.5.7-slim
 
+# Add basic binaries (first pass)
+RUN apt-get update \
+  && apt-get install -y curl gpg \
+  # Clean up the apt cache
+  && rm -rf /var/lib/apt/lists/*
+
 # Specify a major version of Node.js to download and install
 ENV NODEJS_MAJOR_VERSION=10
 
@@ -10,9 +16,9 @@ ENV DISTRIBUTION_CODENAME=buster
 RUN echo 'deb https://deb.nodesource.com/node_${NODEJS_MAJOR_VERSION}.x ${DISTRIBUTION_CODENAME} main' > /etc/apt/sources.list.d/nodesource.list \
   && curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
 
-# Add basic binaries
+# Add basic binaries (second pass)
 RUN apt-get update \
-  && apt-get install -y curl g++ gcc libfontconfig libpq-dev make nodejs patch xz-utils \
+  && apt-get install -y g++ gcc libfontconfig libpq-dev make nodejs patch xz-utils \
   # Clean up the apt cache
   && rm -rf /var/lib/apt/lists/*
 
