@@ -3,7 +3,7 @@ ruby '2.5.7'
 
 gem 'rails', '5.2.2.1'
 
-gem 'activeadmin', '~> 1.4.1'
+gem 'activeadmin', '~> 2.1'
 gem 'bootsnap', require: false
 gem 'bootstrap-sass', '>= 3.4.1'
 gem 'bugsnag'
@@ -29,6 +29,7 @@ gem 'rack-jsonp'
 gem 'rakismet'
 gem 'sassc-rails'
 gem 'simple_form', '~> 5.0'
+gem 'sprockets', '< 4'
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
 gem 'webpacker', '~> 3.5'
