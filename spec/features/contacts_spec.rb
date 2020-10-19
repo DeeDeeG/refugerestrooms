@@ -7,6 +7,7 @@ describe 'the contact process', type: :feature do
     visit restroom_path restroom
     click_link 'Contact'
 
+    expect(page).to have_content('Contact')
     expect(page).not_to have_content('Mission Creek Cafe')
   end
 end
