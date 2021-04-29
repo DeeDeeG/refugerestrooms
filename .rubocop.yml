@@ -28,6 +28,9 @@ AllCops:
     - 'config.rb'
     - 'config.ru'
 
+Style/CommentAnnotation:
+  Enabled: false
+
 Style/Documentation:
   Enabled: false
 
